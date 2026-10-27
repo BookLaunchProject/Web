@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const links = [
-    { href: "/book", label: "Book" },
+    { href: "/#book", label: "Book" },
     { href: "/watch", label: "Watch & Listen" },
     { href: "/work", label: "Work With Christian" },
     { href: "/summit", label: "Summit" },

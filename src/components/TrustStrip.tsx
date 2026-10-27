@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 type Proof = { lead: string; rest: string };
 
@@ -9,84 +9,49 @@ const PROOFS: Proof[] = [
     { lead: "Weekly", rest: "podcast and YouTube" },
 ];
 
-/* Typeset placeholders. Swap for official SVG logos (next/image) when you have them. */
-const TedMark = () => (
-    <span className="trust-marquee__ted" aria-label="TEDx">
-        TED<span className="trust-marquee__ted-x">x</span>
-    </span>
-);
-const CnbcMark = () => (
-    <span className="trust-marquee__cnbc" aria-label="CNBC Africa">
-        <span className="trust-marquee__cnbc-main">CNBC</span>
-        <span className="trust-marquee__cnbc-sub">africa</span>
-    </span>
-);
+/* Typeset wordmarks. Swap each for its official SVG logo (next/image) when you have them.
+   Confirm the CNBC Africa and Canal+ features before launch. */
+const LOGOS: { name: string; node: ReactNode; color: string }[] = [
+    { name: "TEDx", color: "#e62b1e", node: <span className="tm-ted">TED<span>x</span></span> },
+    { name: "CNBC Africa", color: "#0b4f8a", node: <span className="tm-cnbc">CNBC<span> africa</span></span> },
+    { name: "Canal+", color: "#111111", node: <span className="tm-canal">canal+</span> },
+    { name: "60x Business", color: "#d62839", node: <span className="tm-60x">60x<span> Business</span></span> },
+    { name: "G5 Daily", color: "#b81c2c", node: <span className="tm-g5">G5<span> Daily</span></span> },
+    { name: "The School of Business Makers", color: "#8f1418", node: <span className="tm-school">The School of Business Makers</span> },
+];
+
+const repeat = <T,>(arr: T[], n: number) => Array.from({ length: n }, () => arr).flat();
 
 /** One scrolling row. The group is rendered twice so the loop is seamless. */
-function Row({
-    children,
-    seconds,
-    reverse = false,
-}: {
-    children: ReactNode;
-    seconds: number;
-    reverse?: boolean;
-}) {
-    const style = { "--tm-duration": `${seconds}s` } as React.CSSProperties;
+function Row({ children, seconds, reverse = false }: { children: ReactNode; seconds: number; reverse?: boolean }) {
+    const style = { "--tm-duration": `${seconds}s` } as CSSProperties;
     return (
         <div className="trust-marquee__row">
-            <div
-                className={`trust-marquee__track${reverse ? " is-reverse" : ""}`}
-                style={style}
-            >
+            <div className={`trust-marquee__track${reverse ? " is-reverse" : ""}`} style={style}>
                 <ul className="trust-marquee__group">{children}</ul>
-                <ul className="trust-marquee__group" aria-hidden="true">
-                    {children}
-                </ul>
+                <ul className="trust-marquee__group" aria-hidden="true">{children}</ul>
             </div>
         </div>
     );
 }
 
-const repeat = <T,>(arr: T[], n: number) => Array.from({ length: n }, () => arr).flat();
-
 export default function TrustMarquee() {
-    const row1 = repeat(PROOFS, 3);
-    const row3 = repeat([...PROOFS].reverse(), 3);
-
     return (
         <section className="trust-marquee" aria-label="Credentials and media appearances">
-            {/* Row 1: proof points, drifting left */}
-            <Row seconds={50}>
-                {row1.map((p, i) => (
-                    <li key={i} className={`trust-marquee__stat${i >= PROOFS.length ? " is-repeat" : ""}`}>
-                        <span className="trust-marquee__lead">{p.lead}</span>
-                        <span className="trust-marquee__rest">{p.rest}</span>
-                        <span className="trust-marquee__dot" aria-hidden="true" />
+            <p className="trust-marquee__title">As featured on</p>
+
+            <Row seconds={46}>
+                {repeat(LOGOS, 2).map((l, i) => (
+                    <li key={i} className="trust-marquee__logo" style={{ "--c": l.color } as CSSProperties} aria-label={l.name}>
+                        {l.node}
                     </li>
                 ))}
             </Row>
 
-            {/* Row 2: as featured on, drifting right */}
-            <Row seconds={38} reverse>
-                {repeat([0, 1, 2], 5).map((n, i) => (
-                    <li key={i} className={`trust-marquee__brand${i >= 3 ? " is-repeat" : ""}`}>
-                        {n === 0 ? (
-                            <span className="trust-marquee__label">As featured on</span>
-                        ) : n === 1 ? (
-                            <TedMark />
-                        ) : (
-                            <CnbcMark />
-                        )}
-                    </li>
-                ))}
-            </Row>
-
-            {/* Row 3: proof points as chips, drifting left, slower */}
-            <Row seconds={62}>
-                {row3.map((p, i) => (
-                    <li key={i} className={`trust-marquee__chip${i >= PROOFS.length ? " is-repeat" : ""}`}>
-                        <strong>{p.lead}</strong> {p.rest}
+            <Row seconds={60} reverse>
+                {repeat(PROOFS, 3).map((p, i) => (
+                    <li key={i} className="trust-marquee__stat">
+                        <b>{p.lead}</b> {p.rest}
                     </li>
                 ))}
             </Row>

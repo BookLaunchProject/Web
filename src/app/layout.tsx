@@ -39,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${instrument.variable} ${ibm.variable} h-full antialiased`}
+      className={`${serif.variable} ${sans.variable} ${outfit.variable} ${instrument.variable} ${ibm.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-paper font-sans text-ink">
         <Navbar />
