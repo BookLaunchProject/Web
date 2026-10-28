@@ -48,14 +48,12 @@ const FAQ = [
 export default function BookPage() {
     return (
         <main className="bp" id="top">
-            {/* ===== Hero: the cover, blurred, becomes the backdrop; the sharp cover floats on top ===== */}
+            {/* ===== Hero: photo background, white wash on the text side (same style as the home and Work heroes) ===== */}
             <section className="bp-hero">
-                <Image className="bp-hero__bg" src="/images/BookCover.jpg" alt="" fill priority sizes="100vw" />
-                <div className="bp-hero__shade" aria-hidden="true" />
-                <span className="bp-hero__ring" aria-hidden="true" />
+                <Image className="bp-hero__bg" src="/images/BookCover.jpg" alt="Christian Kitumaini reading Behind the Business Dream" fill priority sizes="100vw" />
+                <div className="bp-hero__wash" aria-hidden="true" />
                 <div className="bp-in bp-hero__grid">
                     <div className="bp-hero__copy">
-                        <p className="bp-hero__by">By Christian Kitumaini · Imagine We Publishers</p>
                         <h1>Behind the Business Dream</h1>
                         <p className="bp-hero__sub">The Untold Reality of Rwandan and African Entrepreneurship</p>
                         <p className="bp-hero__text">A practical reality check for anyone building a business in Africa.</p>

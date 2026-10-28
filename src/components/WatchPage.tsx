@@ -25,29 +25,37 @@ const Btn = ({ href, children }: { href: string; children: React.ReactNode }) =>
 export default function WatchPage() {
     return (
         <main className="wl" id="top">
-            {/* ===== Hero ===== */}
+            {/* ===== Hero: photo background with white wash ===== */}
             <section className="wl-hero">
+                <Image
+                    className="wl-hero__bg"
+                    src="/images/authorReading.jpg"
+                    alt="Business media and podcast illustration"
+                    fill
+                    priority
+                    sizes="100vw"
+                />
+
+                <div className="wl-hero__wash" aria-hidden="true" />
+
                 <div className="wl-in wl-hero__in">
                     <div className="wl-hero__copy">
+                        <h1>
+                            Conversations that build <em>businesses</em>
+                        </h1>
 
-                        <h1>Conversations that build <em>businesses</em></h1>
-                        <p className="wl-hero__text">Learn from the people actually doing it. These platforms put real African business builders in front of you, so you can learn from their wins, their mistakes and their mindset.</p>
+                        <p className="wl-hero__text">
+                            Learn from the people actually doing it. These platforms put
+                            real African business builders in front of you, so you can
+                            learn from their wins, their mistakes and their mindset.
+                        </p>
+
                         <nav className="wl-chips" aria-label="Jump to a show">
                             <a href="#showcase">The Podcast</a>
                             <a href="#showcase">60x Business</a>
                             <a href="#showcase">YouTube</a>
                             <a href="#showcase">G5 Daily</a>
                         </nav>
-                    </div>
-
-                    <div className="wl-hero__media" aria-label="Business media showcase image">
-                        <Image
-                            src="/images/Firefly_RemoveBackground.png"
-                            alt="Business media and podcast illustration"
-                            width={820}
-                            height={760}
-                            priority
-                        />
                     </div>
                 </div>
             </section>
