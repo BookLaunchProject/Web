@@ -174,21 +174,25 @@
 }
 
 .bk-role {
-  font-size: 1.15rem;
+  font-size: 1.50rem;
+  font-weight: 900;
   line-height: 1.6;
   color: #4a4343;
   margin: 1.3rem 0 1.6rem
 }
 
 .bk-stmt {
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.50rem;
+  font-weight: 900;
   line-height: 1.25;
-  margin: 0 0 .7rem
+  margin: 0 0 .7rem;
+  color: var(--red);
 }
 
 .bk-sub {
   color: #4a4343;
+  font-size: 1.50rem;
+  font-weight: 900;
   line-height: 1.7;
   margin: 0 0 2rem
 }
@@ -2452,7 +2456,7 @@ html {
 
 .wl-showcase__intro {
   display: grid;
-  gap: 1rem;
+  gap: 0.8rem;
   margin-bottom: clamp(2rem, 5vw, 4rem);
 }
 
@@ -2662,6 +2666,632 @@ html {
   border-radius: 8px;
 }
 
+/* ==========================================================
+   Summit / event page styles
+   ========================================================== */
+
+.ev {
+  --red: #E5383B;
+  --deep: #8F1418;
+  --tint: #fde7e7;
+  --ink: #2a1415;
+  font-family: var(--sans, system-ui, sans-serif);
+  color: var(--ink);
+  overflow-x: clip
+}
+
+.ev a {
+  text-decoration: none
+}
+
+.ev-in {
+  max-width: var(--site-width, 1560px);
+  margin: 0 auto;
+  padding: 0 var(--book-gutter, 32px)
+}
+
+.ev h1,
+.ev h2,
+.ev h3 {
+  font-family: var(--serif, Georgia, serif);
+  font-weight: 700;
+  letter-spacing: -.02em;
+  margin: 0
+}
+
+.ev h2 {
+  line-height: 1.05;
+  font-size: clamp(2.1rem, 4vw, 3.5rem);
+  margin: .8rem 0 0
+}
+
+.ev em {
+  font-style: normal;
+  color: var(--red)
+}
+
+.ev-kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  color: var(--red);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase
+}
+
+.ev-sec {
+  padding: clamp(3.5rem, 8vw, 6.5rem) clamp(20px, 3vw, 40px)
+}
+
+.ev-tint {
+  background: var(--tint)
+}
+
+.ev-muted {
+  color: #77706b;
+  line-height: 1.7;
+  max-width: 42ch;
+  margin: 1.2rem 0 0
+}
+
+.ev-lead {
+  max-width: 52ch;
+  margin: 1.5rem 0 1.4rem;
+  font-size: 1.12rem;
+  line-height: 1.7;
+  color: #4a4343
+}
+
+.ev-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.2rem;
+  align-items: center
+}
+
+.ev-mt {
+  margin-top: 3.5rem
+}
+
+.ev-ghost {
+  color: var(--ink);
+  font-weight: 700;
+  padding: .95rem 1.5rem;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  background: #ffffffb0;
+  transition: background .2s, color .2s, border-color .2s
+}
+
+.ev-ghost:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff
+}
+
+/* summit hero: pale pink + a ticket */
+.ev-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--tint);
+  padding: clamp(3.5rem, 8vw, 7rem) clamp(20px, 3vw, 40px)
+}
+
+.ev-hero::before {
+  content: "";
+  position: absolute;
+  right: -150px;
+  top: -150px;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  border: 2px solid rgba(229, 56, 59, .22)
+}
+
+.ev-hero__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center
+}
+
+.ev-hero h1 {
+  font-size: clamp(2.6rem, 5.8vw, 5.4rem);
+  line-height: 1.02;
+  margin: 1rem 0 0
+}
+
+.ev-details {
+  margin: 0 0 2rem;
+  font: 700 1.25rem var(--serif, Georgia, serif);
+  color: var(--deep)
+}
+
+.ev-ticket {
+  display: grid;
+  grid-template-columns: 1fr 112px;
+  justify-self: center;
+  width: min(100%, 520px);
+  background: #fff;
+  border-radius: 18px;
+  transform: rotate(-4deg);
+  box-shadow: 0 40px 50px -28px rgba(229, 56, 59, .5), 14px 14px 0 #f6c4c6;
+  transition: transform .5s cubic-bezier(.2, .8, .2, 1)
+}
+
+.ev-ticket:hover {
+  transform: rotate(-1deg) translateY(-6px)
+}
+
+.ev-ticket__main {
+  padding: 2.2rem 2rem
+}
+
+.ev-ticket small {
+  display: block;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--red)
+}
+
+.ev-ticket strong {
+  display: block;
+  margin: .8rem 0 1.4rem;
+  font: 700 clamp(2rem, 3.4vw, 2.8rem)/1.05 var(--serif, Georgia, serif)
+}
+
+.ev-ticket p {
+  margin: .2rem 0;
+  font-size: 1.05rem;
+  color: #77706b
+}
+
+.ev-ticket__stub {
+  position: relative;
+  border-left: 3px dashed #f0c4c6;
+  display: grid;
+  place-items: center
+}
+
+.ev-ticket__stub::before,
+.ev-ticket__stub::after {
+  content: "";
+  position: absolute;
+  left: -17px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--tint)
+}
+
+.ev-ticket__stub::before {
+  top: -15px
+}
+
+.ev-ticket__stub::after {
+  bottom: -15px
+}
+
+.ev-ticket__stub i {
+  width: 46px;
+  height: 68%;
+  background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 5px, var(--ink) 5px 6px, transparent 6px 10px)
+}
+
+/* expect */
+.ev-expect {
+  list-style: none;
+  margin: 3rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px
+}
+
+.ev-expect li {
+  position: relative;
+  background: #fff;
+  border: 1px solid #ead0d0;
+  border-radius: 6px;
+  padding: 2.6rem 1.4rem 1.6rem;
+  transition: transform .35s, box-shadow .35s, border-color .35s
+}
+
+.ev-expect li:hover {
+  transform: translateY(-8px);
+  border-color: var(--red);
+  box-shadow: 0 30px 34px -22px rgba(229, 56, 59, .45)
+}
+
+.ev-expect span {
+  position: absolute;
+  left: 1.4rem;
+  top: .7rem;
+  font: 700 2.4rem/1 var(--serif, Georgia, serif);
+  color: transparent;
+  -webkit-text-stroke: 1.5px #f0a9ab
+}
+
+.ev-expect p {
+  margin: 0;
+  font: 600 1.1rem/1.35 var(--serif, Georgia, serif)
+}
+
+/* stage placeholders */
+.ev-stage {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+  margin-top: 5rem
+}
+
+.ev-spk {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px
+}
+
+.ev-spk span {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px dashed #f0a9ab;
+  display: grid;
+  place-items: center;
+  font: 700 2.6rem var(--serif, Georgia, serif);
+  color: #f0a9ab;
+  transition: transform .3s, background .3s
+}
+
+.ev-spk span:hover {
+  transform: scale(1.06) rotate(-4deg);
+  background: var(--tint)
+}
+
+/* cards, partners, waitlist */
+.ev-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.4rem, 3vw, 2.5rem);
+  align-items: start
+}
+
+.ev-two--book {
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 6vw, 6rem)
+}
+
+.ev-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: clamp(1.6rem, 3vw, 2.6rem);
+  box-shadow: 0 36px 40px -26px rgba(229, 56, 59, .4)
+}
+
+.ev-card .ev-muted {
+  margin-bottom: 1.6rem
+}
+
+.ev-logos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 0 0 1.8rem
+}
+
+.ev-logos i {
+  font-style: normal;
+  text-align: center;
+  font-size: .8rem;
+  color: #b9a9a9;
+  padding: 1.1rem .4rem;
+  border: 2px dashed #ead0d0;
+  border-radius: 10px
+}
+
+.ev-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem
+}
+
+.ev-f--wide {
+  grid-column: 1/-1
+}
+
+.ev-f label {
+  display: block;
+  margin-bottom: .35rem;
+  font-size: .85rem;
+  font-weight: 700
+}
+
+.ev-f input,
+.ev-f textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  background: #fff;
+  border: 2px solid #ead0d0;
+  border-radius: 10px;
+  padding: .75rem 1rem;
+  transition: border-color .2s, box-shadow .2s
+}
+
+.ev-f input:focus,
+.ev-f textarea:focus {
+  outline: 0;
+  border-color: var(--red);
+  box-shadow: 0 0 0 4px rgba(229, 56, 59, .14)
+}
+
+.ev-submit {
+  grid-column: 1/-1;
+  justify-self: start;
+  border: 0;
+  font: inherit;
+  font-weight: 700;
+  padding: 1rem 1.8rem;
+  cursor: pointer
+}
+
+.ev-ok {
+  margin: 0;
+  font: 600 1.35rem/1.4 var(--serif, Georgia, serif);
+  color: var(--deep)
+}
+
+/* speaking hero: photo + white wash (same as the other heroes) */
+.ev-hero2 {
+  position: relative;
+  overflow: hidden;
+  min-height: min(80vh, 740px);
+  display: flex;
+  align-items: center;
+  padding: clamp(3.5rem, 8vw, 6rem) clamp(20px, 3vw, 40px);
+  background: #fff;
+  scroll-margin-top: 72px
+}
+
+.ev-hero2__bg {
+  object-fit: cover;
+  object-position: right top
+}
+
+.ev-hero2__wash {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, .94) 36%, rgba(255, 255, 255, .4) 68%, rgba(255, 255, 255, 0) 100%)
+}
+
+.ev-hero2__in {
+  position: relative;
+  width: 100%
+}
+
+.ev-hero2 h1 {
+  font-size: clamp(2.4rem, 4.8vw, 4.4rem);
+  line-height: 1.04;
+  margin: 1rem 0 0;
+  max-width: 15ch
+}
+
+.ev-hero2 .ev-lead {
+  margin-bottom: 2.2rem
+}
+
+/* talk + video */
+.ev-talk {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center
+}
+
+.ev-video {
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: 22px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--tint), #fff);
+  border: 2px dashed #f0a9ab;
+  box-shadow: 16px 16px 0 var(--tint)
+}
+
+.ev-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0
+}
+
+.ev-video__play {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  transition: transform .3s
+}
+
+.ev-video:hover .ev-video__play {
+  transform: scale(1.12)
+}
+
+.ev-video em {
+  position: absolute;
+  left: 16px;
+  bottom: 12px;
+  font-size: .85rem;
+  color: var(--deep)
+}
+
+/* signature talks + formats */
+.ev-talks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 1.6rem
+}
+
+.ev-talks article {
+  position: relative;
+  background: #fff;
+  border: 1px solid #ead0d0;
+  border-radius: 6px;
+  padding: 2.2rem 2rem 1.8rem;
+  overflow: hidden;
+  transition: transform .35s, box-shadow .35s, border-color .35s
+}
+
+.ev-talks article:hover {
+  transform: translateY(-8px);
+  border-color: var(--red);
+  box-shadow: 0 30px 34px -22px rgba(229, 56, 59, .45)
+}
+
+.ev-talks span {
+  position: absolute;
+  right: 1.3rem;
+  top: .5rem;
+  font: 700 4.4rem/1 var(--serif, Georgia, serif);
+  color: transparent;
+  -webkit-text-stroke: 1.5px #f0c4c6
+}
+
+.ev-talks h3 {
+  font-size: 1.5rem;
+  line-height: 1.12;
+  max-width: 18ch;
+  margin-bottom: .7rem
+}
+
+.ev-talks p {
+  margin: 0;
+  color: #77706b;
+  line-height: 1.55
+}
+
+.ev-chips {
+  list-style: none;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem
+}
+
+.ev-chips li {
+  font: 600 1.2rem var(--serif, Georgia, serif);
+  padding: .7rem 1.4rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  transition: background .25s, color .25s, border-color .25s, transform .25s
+}
+
+.ev-chips li:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+  transform: translateY(-3px) rotate(-1.5deg)
+}
+
+/* downloads */
+.ev-dl-h {
+  margin: 2.4rem 0 .6rem;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--red)
+}
+
+.ev-dl {
+  list-style: none;
+  margin: 0;
+  padding: 0
+}
+
+.ev-dl a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid #f0c4c6;
+  font: 600 1.15rem var(--serif, Georgia, serif);
+  transition: color .25s, padding-left .25s
+}
+
+.ev-dl li:last-child a {
+  border-bottom: 1px solid #f0c4c6
+}
+
+.ev-dl a:hover {
+  color: var(--red);
+  padding-left: .6rem
+}
+
+.ev a:focus-visible,
+.ev button:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 4px;
+  border-radius: 6px
+}
+
+@media(max-width:1100px) {
+  .ev-expect {
+    grid-template-columns: repeat(2, minmax(0, 1fr))
+  }
+}
+
+@media(max-width:900px) {
+
+  .ev-hero__grid,
+  .ev-stage,
+  .ev-two,
+  .ev-two--book,
+  .ev-talk,
+  .ev-talks {
+    grid-template-columns: 1fr
+  }
+
+  .ev-hero2__wash {
+    background: rgba(255, 255, 255, .86)
+  }
+}
+
+@media(max-width:600px) {
+  .ev-form {
+    grid-template-columns: 1fr
+  }
+
+  .ev-expect {
+    grid-template-columns: 1fr
+  }
+
+  .ev-ticket {
+    grid-template-columns: 1fr 84px
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .ev * {
+    transition: none !important
+  }
+}
+
 /* Work With Christian: programs + mastermind (one page). Delete the older .wk rules first. */
 .wk {
   --red: #E5383B;
@@ -2717,6 +3347,11 @@ html {
   text-transform: uppercase
 }
 
+.wk-kicker::before {
+  content: "";
+  background: var(--red)
+}
+
 .wk-sec {
   padding: clamp(3.5rem, 8vw, 6.5rem) clamp(20px, 3vw, 40px)
 }
@@ -2734,11 +3369,9 @@ html {
 
 .wk-muted {
   color: #77706b;
-  line-height: 2;
+  line-height: 1.7;
   max-width: 50ch;
-  margin: 2rem 0 0;
-  font-size: 1.55rem;
-  font-weight: 600;
+  margin: 2rem 0 0
 }
 
 .wk-muted b {
