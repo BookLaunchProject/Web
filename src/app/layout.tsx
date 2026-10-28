@@ -3,6 +3,7 @@ import { IBM_Plex_Mono, Instrument_Serif, Outfit } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Fraunces, Hanken_Grotesk } from "next/font/google";
+import Footer from "@/components/Footer";
 
 const serif = Fraunces({ subsets: ["latin"], variable: "--serif" });
 const sans = Hanken_Grotesk({ subsets: ["latin"], variable: "--sans" });
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full bg-paper font-sans text-ink">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
