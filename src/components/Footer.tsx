@@ -11,13 +11,13 @@ const COLUMNS = [
     {
         title: "Work together", links: [
             { label: "Programs", href: "/work" },
-            { label: "Speaking", href: "/speaking" },
+            { label: "Speaking", href: "/summit#speaking" },
             { label: "Press & Media", href: "/press" },
         ]
     },
     {
         title: "Community", links: [
-            { label: "Mastermind", href: "/mastermind" },
+            { label: "Mastermind", href: "/work#mastermind" },
             { label: "Summit", href: "/summit" },
             { label: "Business Makers Wall", href: "/wall" },
         ]
@@ -35,6 +35,7 @@ const SOCIALS = [
 export default function Footer() {
     return (
         <footer className="ft">
+            <p className="ft__ghost" aria-hidden="true">Kitumaini</p>
 
             <div className="ft__in">
                 <div className="ft__top">

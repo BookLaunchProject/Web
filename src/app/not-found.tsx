@@ -1,16 +1,19 @@
-import { Button } from "@/components/ui";
+import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <section className="mx-auto max-w-3xl px-5 py-24">
-      <p className="kicker text-red">404</p>
-      <h1 className="display mt-4 text-6xl md:text-8xl">This page did not last.</h1>
-      <p className="mt-6 text-lg text-muted">
-        The mechanics were missing. Go back and pick a real next step.
-      </p>
-      <div className="mt-8">
-        <Button href="/">Home</Button>
+    <main className="ab nf" id="top">
+      <div className="ab-in">
+        <p className="ab-kicker">404</p>
+        <h1>This page did not <em className="u-hand">last.</em></h1>
+        <p>The mechanics were missing. Go back and pick a real next step.</p>
+        <Link className="bk-btn" href="/">
+          Home
+          <span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true"><path d="M4 12h15M14 7l5 5-5 5" /></svg>
+          </span>
+        </Link>
       </div>
-    </section>
+    </main>
   );
 }

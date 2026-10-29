@@ -10,7 +10,6 @@ export default function MeetAuthor() {
                         src="/images/Author.jpg"
                         alt="Christian Kitumaini"
                         fill
-                        priority
                         sizes="(max-width: 720px) 100vw, 42vw"
                         style={{ objectFit: "cover", objectPosition: "center top" }}
                     />

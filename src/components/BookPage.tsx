@@ -50,11 +50,11 @@ export default function BookPage() {
         <main className="bp" id="top">
             {/* ===== Hero: photo background, white wash on the text side (same style as the home and Work heroes) ===== */}
             <section className="bp-hero">
-                <Image className="bp-hero__bg" src="/images/BookCover.jpg" alt="Christian Kitumaini reading Behind the Business Dream" fill priority sizes="100vw" />
+                <Image className="bp-hero__bg" src="/images/BookCover.jpg" alt="Christian Kitumaini reading Behind the Business Dream" fill preload sizes="100vw" />
                 <div className="bp-hero__wash" aria-hidden="true" />
                 <div className="bp-in bp-hero__grid">
                     <div className="bp-hero__copy">
-                        <h1>Behind the Business Dream</h1>
+                        <h1>Behind the Business <em className="u-hand">Dream</em></h1>
                         <p className="bp-hero__sub">The Untold Reality of Rwandan and African Entrepreneurship</p>
                         <p className="bp-hero__text">A practical reality check for anyone building a business in Africa.</p>
                         <div className="bp-row">
@@ -63,7 +63,7 @@ export default function BookPage() {
                         </div>
                     </div>
                     <div className="bp-hero__book" aria-hidden="true">
-                        <Image src="/images/BookCover.jpg" alt="" width={420} height={630} priority />
+                        <Image src="/images/BookCover.jpg" alt="" width={420} height={635} preload />
                     </div>
                 </div>
             </section>
@@ -78,13 +78,10 @@ export default function BookPage() {
                     <div className="bp-why__text">
                         <p className="bp-lead">Most business books are written for another market, then handed to African founders as gospel. This one starts from the ground you&apos;re standing on.</p>
                         <p>I cut through the noise and take apart the imported formulas that ignore Africa&apos;s real business environment. In their place, I share practical, homegrown models built for the realities on the ground, drawn from stories of triumph and failure from Rwanda and across the continent.</p>
-                        <div className="bp-kicker">
-                            Written For
-                        </div>
-
-                        <p>Written for people who are serious about building
-
-                            Entrepreneurs. Aspiring founders. Early-stage business owners. Professionals moving into entrepreneurship. University students. </p>
+                        <p className="bp-kicker bp-for__k">Written for people who are serious about building</p>
+                        <ul className="bp-for">
+                            {FOR.map((w) => (<li key={w}>{w.replace(/\.$/, "")}</li>))}
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -97,7 +94,7 @@ export default function BookPage() {
                     <ol className="bp-grid">
                         {INSIDE.map((x, i) => (
                             <li key={x.t}>
-                                <span>0{i + 1}</span>
+
                                 <h3>{x.t}</h3>
                                 <p>{x.d}</p>
                             </li>

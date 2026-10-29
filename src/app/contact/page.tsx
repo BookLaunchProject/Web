@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ContactSection } from "@/components/AboutPage";
+import { ContactSection } from "@/components/ContactSection";
 
 export const metadata: Metadata = {
     title: "Contact Christian Kitumaini",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
     return (
-        <main className="ab-contact-page">
+        <main className="ab">
             <ContactSection />
         </main>
     );

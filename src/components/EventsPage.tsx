@@ -190,7 +190,7 @@ export default function EventsPage() {
                     <div className="ev-talks">
                         {TALKS.map((t, i) => (
                             <article key={t.t}>
-                                <span>0{i + 1}</span>
+
                                 <h3>{t.t}</h3>
                                 <p>{t.d}</p>
                             </article>

@@ -29,6 +29,37 @@ export function Button({
   );
 }
 
+/** Round sticker with text that slowly spins around an arrow. `id` must be unique on the page. */
+export function RoundBadge({
+  id,
+  text,
+  href,
+  label,
+  className = "",
+}: {
+  id: string;
+  text: string;
+  href: string;
+  label: string;
+  className?: string;
+}) {
+  return (
+    <Link href={href} className={`rbadge ${className}`} aria-label={label}>
+      <svg className="rbadge__ring" viewBox="0 0 200 200" aria-hidden="true">
+        <defs>
+          <path id={id} d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
+        </defs>
+        <text>
+          <textPath href={`#${id}`} textLength="486" lengthAdjust="spacing">{text}</textPath>
+        </text>
+      </svg>
+      <span className="rbadge__core" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M7 17 17 7M9 7h8v8" /></svg>
+      </span>
+    </Link>
+  );
+}
+
 export function Kicker({
   children,
   light = false,

@@ -100,7 +100,7 @@ export default function WorkPage() {
         <main className="wk" id="top">
             {/* ===== 1. Hero: the photo is the background, a white wash keeps the words readable ===== */}
             <section className="wk-hero">
-                <Image className="wk-hero__bg" src="/images/Author.jpg" alt="" fill priority sizes="100vw" />
+                <Image className="wk-hero__bg" src="/images/Author.jpg" alt="" fill preload sizes="100vw" />
                 <div className="wk-hero__wash" aria-hidden="true" />
                 <div className="wk-in wk-hero__in">
 
@@ -122,7 +122,7 @@ export default function WorkPage() {
                     <div className="wk-cards">
                         {PROGRAMS.map((p) => (
                             <article key={p.n} className="wk-card">
-                                <span className="wk-card__n">{p.n}</span>
+
                                 <h3>{p.t}</h3>
                                 <p className="wk-card__for">{p.f}</p>
                                 <p>{p.d}</p>

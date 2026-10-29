@@ -22,7 +22,7 @@ const STEPS = [
         icon: <g {...ic}><rect x="5" y="4" width="14" height="17" rx="2" /><path d="M9 4h6M9 11h6M9 15h4" /></g>
     },
     {
-        t: "The Mastermind", d: "A private room for serious business makers.", b: "Apply to join", h: "/mastermind", c: "#E5383B",
+        t: "The Mastermind", d: "A private room for serious business makers.", b: "Apply to join", h: "/work#mastermind", c: "#E5383B",
         icon: <g {...ic}><circle cx="9" cy="8" r="3" /><circle cx="17" cy="9" r="2.5" /><path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6M15 14.3c3 0 6 1.5 6 5.7" /></g>
     },
     {
@@ -30,7 +30,7 @@ const STEPS = [
         icon: <g {...ic}><path d="M5 21V4M5 5h12l-2 4 2 4H5" /></g>
     },
     {
-        t: "Speaking", d: "Keynotes and workshops that change the narrative.", b: "Book Christian", h: "/speaking", c: "#8F1418",
+        t: "Speaking", d: "Keynotes and workshops that change the narrative.", b: "Book Christian", h: "/summit#speaking", c: "#8F1418",
         icon: <g {...ic}><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5 11a7 7 0 0 0 14 0M12 18v3M9 21h6" /></g>
     },
 ];

@@ -1,30 +1,11 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, Instrument_Serif, Outfit } from "next/font/google";
+import { Fraunces, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import { Fraunces, Hanken_Grotesk } from "next/font/google";
 import Footer from "@/components/Footer";
 
-const serif = Fraunces({ subsets: ["latin"], variable: "--serif" });
+const serif = Fraunces({ subsets: ["latin"], variable: "--serif", style: ["normal", "italic"] });
 const sans = Hanken_Grotesk({ subsets: ["latin"], variable: "--sans" });
-
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-});
-
-const instrument = Instrument_Serif({
-  variable: "--font-instrument",
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-});
-
-const ibm = IBM_Plex_Mono({
-  variable: "--font-ibm",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://christiankitumaini.com"),
@@ -38,11 +19,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${serif.variable} ${sans.variable} ${outfit.variable} ${instrument.variable} ${ibm.variable} h-full antialiased`}
-    >
-      <body className="min-h-full bg-paper font-sans text-ink">
+    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
+      <body>
         <Navbar />
         {children}
         <Footer />
