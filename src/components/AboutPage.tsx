@@ -80,7 +80,7 @@ export default function AboutPage() {
                         <p className="ab-kicker">My story</p>
                         <h2>Building businesses, and the <em>people</em> behind them</h2>
                         <div className="ab-story__photo">
-                            <Image src="/images/authorReading.jpg" alt="Christian reading Behind the Business Dream" fill sizes="(max-width: 900px) 70vw, 30vw" />
+                            <Image src="/images/ChristianSpeaking.jpeg" alt="Christian Kitumaini speaking at a podium" fill sizes="(max-width: 900px) 70vw, 30vw" />
                         </div>
                     </aside>
 
@@ -136,6 +136,7 @@ export default function AboutPage() {
                         <p className="ab-kicker">The group</p>
                         <h2 className="ab-h2">The G5 Business <em>Makers</em> Group</h2>
                         <p>Platforms and initiatives that inspire and educate young people through media, mentorship, financial and investment education, and networking.</p>
+                        <blockquote className="ab-g5__quote">&ldquo;No one will share our narrative if we don&apos;t start.&rdquo;<cite>From Behind the Business Dream</cite></blockquote>
                         <span className="ab-g5__mark" aria-hidden="true">G5</span>
                     </div>
                     <ul className="ab-g5__list">

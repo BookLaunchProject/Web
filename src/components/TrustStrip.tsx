@@ -12,6 +12,7 @@ const PROOFS: Proof[] = [
 /* Typeset wordmarks. Swap each for its official SVG logo (next/image) when you have them.
    Confirm the CNBC Africa and Canal+ features before launch. */
 const LOGOS: { name: string; node: ReactNode; color: string }[] = [
+    { name: "The New Times", color: "#1c1c1c", node: <span className="tm-nt">The New Times</span> },
     { name: "TEDx", color: "#e62b1e", node: <span className="tm-ted">TED<span>x</span></span> },
     { name: "CNBC Africa", color: "#0b4f8a", node: <span className="tm-cnbc">CNBC<span> africa</span></span> },
     { name: "Canal+", color: "#111111", node: <span className="tm-canal">canal+</span> },

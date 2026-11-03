@@ -25,6 +25,8 @@ const PHOTOS = [
     { src: "/images/Author.jpg", alt: "Christian Kitumaini, portrait in his library" },
     { src: "/images/Authorbg.jpg", alt: "Christian Kitumaini holding Behind the Business Dream" },
     { src: "/images/authorReading.jpg", alt: "Christian Kitumaini reading, black and white" },
+    { src: "/images/Christian.jpg", alt: "Christian Kitumaini, seated portrait" },
+    { src: "/images/ChristianSpeaking.jpeg", alt: "Christian Kitumaini speaking at a podium" },
 ];
 
 const TOPICS = [
@@ -36,7 +38,11 @@ const TOPICS = [
 ];
 
 /* Confirm the CNBC Africa and Canal+ features before launch */
-const FEATURES = [
+const FEATURES: { name: string; node: React.ReactNode; href?: string }[] = [
+    {
+        name: "The New Times", node: <span className="tm-nt">The New Times</span>,
+        href: "https://www.newtimes.co.rw/article/40062/news/featured/behind-the-business-dream-new-book-unpacks-the-realities-of-entrepreneurship",
+    },
     { name: "TEDx", node: <span className="tm-ted">TED<span>x</span></span> },
     { name: "CNBC Africa", node: <span className="tm-cnbc">CNBC<span> africa</span></span> },
     { name: "Canal+", node: <span className="tm-canal">canal+</span> },
@@ -153,7 +159,11 @@ export default function PressPage() {
                     <div className="pr-features">
                         <p className="ab-kicker">Past features</p>
                         <ul>
-                            {FEATURES.map((f) => (<li key={f.name} aria-label={f.name}>{f.node}</li>))}
+                            {FEATURES.map((f) => (
+                                <li key={f.name} aria-label={f.name}>
+                                    {f.href ? <a href={f.href} target="_blank" rel="noopener noreferrer">{f.node} <small>Read the article ↗</small></a> : f.node}
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>

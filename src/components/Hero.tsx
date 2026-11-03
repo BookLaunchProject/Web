@@ -42,7 +42,7 @@ export default function Hero() {
                 </div>
             </div>
 
-            <RoundBadge id="hero-badge" className="bk-hero__badge" href="/book" label="Read about the book" text="BEHIND THE BUSINESS DREAM • READ THE BOOK • " />
+            <RoundBadge id="hero-badge" className="bk-hero__badge rbadge--new" href="/start" label="New here? Start with the guide" text="NEW HERE? • START HERE • NEW HERE? • START HERE • " core="?" />
         </section>
     );
 }

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const BUY = "https://btbd.imaginewe.rw/";
+const INTRO_VIDEO = "https://player.vimeo.com/video/1242978263?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479";
 
 const Arrow = () => (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
@@ -38,6 +39,23 @@ const PRAISE = [
     { q: "[Review 7, exactly as printed in the praise pages]", n: "[Name]", r: "[Title, organisation]" },
 ];
 
+/* From The New Times feature, 29 October 2026 */
+const ARTICLE = "https://www.newtimes.co.rw/article/40062/news/featured/behind-the-business-dream-new-book-unpacks-the-realities-of-entrepreneurship";
+
+const GLANCE = [
+    { n: "160", l: "pages" },
+    { n: "100+", l: "founders' journeys behind it" },
+    { n: "2018", l: "when the writing began" },
+    { n: "Tools", l: "processes, guidance and checklists" },
+];
+
+const CHAPTERS = [
+    "Why Most Startups Don't Make It to Day 1,000",
+    "Lessons from running a business after the pandemic",
+];
+
+const FOUNDERS = ["House of Tayo", "Soho", "Bag Innovation", "Flove", "Imagine We"];
+
 const FAQ = [
     { q: "Where can I get the book?", a: "[Outlets and online link]" },
     { q: "Do you ship outside Rwanda?", a: "[Answer]" },
@@ -61,6 +79,7 @@ export default function BookPage() {
                             <Link className="bk-btn" href={BUY} target="_blank" rel="noopener noreferrer">Get the Book <span><Arrow /></span></Link>
                             <a className="bp-ghost" href="#intro">▶ Watch Christian&apos;s introduction</a>
                         </div>
+                        <p className="bp-hero__note">Pre-order your copy now and secure your spot at the official launch.</p>
                     </div>
                     <div className="bp-hero__book" aria-hidden="true">
                         <Image src="/images/BookCover.jpg" alt="" width={420} height={635} preload />
@@ -86,6 +105,18 @@ export default function BookPage() {
                 </div>
             </section>
 
+            {/* ===== At a glance ===== */}
+            <section className="bp-glance" aria-label="The book at a glance">
+                <dl className="bp-in bp-glance__in">
+                    {GLANCE.map((g) => (
+                        <div key={g.l}>
+                            <dt>{g.n}</dt>
+                            <dd>{g.l}</dd>
+                        </div>
+                    ))}
+                </dl>
+            </section>
+
             {/* ===== What you will find inside ===== */}
             <section className="bp-sec bp-tint">
                 <div className="bp-in">
@@ -101,16 +132,37 @@ export default function BookPage() {
                         ))}
                     </ol>
                     <p className="bp-close">All without sugarcoating the journey.</p>
+
+                    <div className="bp-more">
+                        <div>
+                            <p className="bp-kicker">Chapters include</p>
+                            <ul className="bp-chapters">
+                                {CHAPTERS.map((c) => (<li key={c}>{c}</li>))}
+                            </ul>
+                        </div>
+                        <div>
+                            <p className="bp-kicker">With stories from the founders behind</p>
+                            <ul className="bp-for">
+                                {FOUNDERS.map((f) => (<li key={f}>{f}</li>))}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             {/* ===== A message from Christian ===== */}
             <section className="bp-sec bp-dark" id="intro">
                 <div className="bp-in bp-msg">
-                    <div className="bp-video" role="img" aria-label="Video placeholder: Christian's 60-second introduction">
-                        <Image src="/images/authorReading.jpg" alt="" fill sizes="(max-width: 900px) 100vw, 55vw" />
-                        <span className="bp-video__play" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg></span>
-                        <em>[60-second video]</em>
+                    {/* Hosted on Vimeo so the page doesn't have to load the video file itself */}
+                    <div className="bp-video is-live">
+                        <iframe
+                            src={INTRO_VIDEO}
+                            title="A message from Christian Kitumaini"
+                            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            loading="lazy"
+                            allowFullScreen
+                        />
                     </div>
                     <div>
                         <p className="bp-kicker">A message from Christian</p>
@@ -136,8 +188,23 @@ export default function BookPage() {
                 </div>
             </section>
 
+            {/* ===== In the press ===== */}
+            <section className="bp-sec bp-press">
+                <div className="bp-in bp-press__in">
+                    <p className="bp-kicker">In the press</p>
+                    <blockquote>
+                        &ldquo;This book is not a magic blueprint that will help someone become a millionaire the next day.&rdquo;
+                    </blockquote>
+                    <p className="bp-press__sub">&ldquo;A book is like wine. It takes time to make it beautiful, solid.&rdquo;</p>
+                    <p className="bp-press__src">
+                        <b>Christian Kitumaini</b>, speaking to <span className="tm-nt">The New Times</span>
+                    </p>
+                    <a className="bp-press__link" href={ARTICLE} target="_blank" rel="noopener noreferrer">Read the article ↗</a>
+                </div>
+            </section>
+
             {/* ===== Launch event ===== */}
-            <section className="bp-launch">
+            {/* <section className="bp-launch">
                 <div className="bp-in bp-launch__in">
                     <div>
                         <p className="bp-kicker">Launch event</p>
@@ -147,7 +214,7 @@ export default function BookPage() {
                     </div>
                     <Link className="bp-white" href="/contact">RSVP <Arrow /></Link>
                 </div>
-            </section>
+            </section> */}
 
             {/* ===== Bulk orders ===== */}
             <section className="bp-sec bp-tint">

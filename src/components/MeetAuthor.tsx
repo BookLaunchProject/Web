@@ -7,7 +7,7 @@ export default function MeetAuthor() {
             <div className="meet-author__inner">
                 <div className="meet-author__media">
                     <Image
-                        src="/images/Author.jpg"
+                        src="/images/Christian.jpg"
                         alt="Christian Kitumaini"
                         fill
                         sizes="(max-width: 720px) 100vw, 42vw"

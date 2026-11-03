@@ -5,7 +5,7 @@ import { useState } from "react";
 
 /* ---- fill these in ---- */
 const PARTNER_DECK = "#";      // e.g. "/downloads/partner-deck.pdf"
-const TEDX_EMBED = "";         // e.g. "https://www.youtube-nocookie.com/embed/VIDEO_ID" (leave empty to show the placeholder)
+const TEDX_EMBED = "https://www.youtube-nocookie.com/embed/4PYMV12oXs8"; // TEDxYouth@Nyarugenge talk (leave empty to show the placeholder)
 const DOWNLOADS = [
     { label: "Speaker one-sheet", href: "#" },
     { label: "Photos", href: "#" },
@@ -63,6 +63,29 @@ const TALKS = [
     { t: "A New Narrative for African Entrepreneurs", d: "from stories of struggle to stories of impact" },
     { t: "Homegrown Business Models", d: "why imported playbooks fail here and what works instead" },
     { t: "Capital, Leadership and Resilience", d: "the hard truths every founder faces" },
+];
+
+/* Past editions. Add a photo by setting `src` (e.g. "/images/summit/keynote.jpg"); tiles without one show a placeholder. */
+const GALLERY: { caption: string; tag: string; src?: string }[] = [
+    { caption: "[Keynote on the main stage]", tag: "[Year]" },
+    { caption: "[Fireside conversation]", tag: "[Year]" },
+    { caption: "[Live podcast recording]", tag: "[Year]" },
+    { caption: "[Startup showcase]", tag: "[Year]" },
+    { caption: "[Masterclass: capital and funding]", tag: "[Year]" },
+    { caption: "[Curated networking]", tag: "[Year]" },
+];
+
+/* Partner tiers are proposals: confirm names and benefits with Christian */
+const TIERS = [
+    { t: "Headline partner", d: "Your name on the day.", perks: ["Naming on the summit stage and materials", "A keynote or fireside slot", "Front-row seats for your team"] },
+    { t: "Session partner", d: "Own a moment that matters.", perks: ["Branding on one masterclass or panel", "A speaker seat on that session", "Logo on the website and screens"] },
+    { t: "Community partner", d: "Back the next generation.", perks: ["Logo on the website and screens", "Tickets for your team or community", "A thank-you in the live recordings"] },
+];
+
+const WHY_PARTNER = [
+    { n: "Founders", d: "Meet the next generation of African business builders." },
+    { n: "Investors", d: "Sit in the room where real deals start." },
+    { n: "Leaders", d: "Join policymakers and CEOs shaping the market." },
 ];
 
 const FORMATS = ["Keynotes", "Panels", "Fireside chats", "Workshops", "Moderator and MC"];
@@ -136,19 +159,86 @@ export default function EventsPage() {
                 </div>
             </section>
 
-            <section className="ev-sec ev-tint" id="waitlist">
-                <div className="ev-in ev-two">
-                    <div className="ev-card">
-                        <p className="ev-kicker">Partners</p>
-                        <h2>Partner with <em>us</em></h2>
-                        <p className="ev-muted">Put your brand in front of Africa&apos;s next generation of business builders.</p>
-                        <div className="ev-logos" aria-hidden="true"><i>Your logo</i><i>Your logo</i><i>Your logo</i></div>
-                        <a className="bk-btn" href={PARTNER_DECK} download>Download the partner deck <span><Arrow /></span></a>
+            {/* ================= PAST EDITIONS ================= */}
+            <section className="ev-gal" id="gallery" aria-labelledby="ev-gal-title">
+                <div className="ev-in">
+                    <div className="ev-gal__head">
+                        <div>
+                            <p className="ev-kicker">Past editions</p>
+                            <h2 id="ev-gal-title">Moments from the <em>room</em></h2>
+                        </div>
+                        <p className="ev-gal__note">Real talk, real networks and real deals, captured.</p>
                     </div>
-                    <div className="ev-card">
+                    <ul className="ev-gal__grid">
+                        {GALLERY.map((g, i) => (
+                            <li key={i} className={`ev-gal__tile${g.src ? "" : " is-empty"}`}>
+                                {g.src ? (
+                                    <Image src={g.src} alt={g.caption} fill sizes="(max-width: 700px) 100vw, 40vw" />
+                                ) : (
+                                    <svg className="ev-gal__cam" viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                        <path d="M4 8h3l2-3h6l2 3h3v11H4z" /><circle cx="12" cy="13" r="3.5" />
+                                    </svg>
+                                )}
+                                <span className="ev-gal__tag">{g.tag}</span>
+                                <p className="ev-gal__cap">{g.caption}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </section>
+
+            {/* ================= PARTNERSHIP ================= */}
+            <section className="ev-sec ev-partner" id="partners">
+                <div className="ev-in">
+                    <div className="ev-partner__top">
+                        <div>
+                            <p className="ev-kicker">Partnership</p>
+                            <h2>Partner with <em>us</em></h2>
+                            <p className="ev-muted">Put your brand in front of Africa&apos;s next generation of business builders, in one room, on one day.</p>
+                            <div className="ev-row ev-partner__cta">
+                                <a className="bk-btn" href={PARTNER_DECK} download>Download the partner deck <span><Arrow /></span></a>
+                                <a className="ev-ghost" href="/contact">Talk to us</a>
+                            </div>
+                        </div>
+                        <ul className="ev-why">
+                            {WHY_PARTNER.map((w) => (
+                                <li key={w.n}><b>{w.n}</b><span>{w.d}</span></li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div className="ev-tiers">
+                        {TIERS.map((t, i) => (
+                            <article key={t.t} className={`ev-tier${i === 0 ? " is-top" : ""}`}>
+                                <span className="ev-tier__n">0{i + 1}</span>
+                                <h3>{t.t}</h3>
+                                <p className="ev-tier__d">{t.d}</p>
+                                <ul>
+                                    {t.perks.map((p) => (<li key={p}>{p}</li>))}
+                                </ul>
+                                <a href="/contact">Enquire <Arrow color="currentColor" /></a>
+                            </article>
+                        ))}
+                    </div>
+
+                    <div className="ev-logos-wall">
+                        <p>Past partners</p>
+                        <div className="ev-logos" aria-hidden="true">
+                            {Array.from({ length: 5 }, (_, i) => (<i key={i}>Your logo</i>))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ================= WAITLIST ================= */}
+            <section className="ev-sec ev-tint" id="waitlist">
+                <div className="ev-in ev-two ev-wait">
+                    <div>
                         <p className="ev-kicker">Waitlist</p>
                         <h2>Be first to <em>know</em></h2>
                         <p className="ev-muted">Join the list and you&apos;ll hear about tickets, speakers and early offers before anyone else.</p>
+                    </div>
+                    <div className="ev-card">
                         <Form id="waitlist" fields={WAITLIST} button="Notify me" success="You're on the list. We'll tell you about tickets, speakers and early offers first." />
                     </div>
                 </div>
@@ -156,7 +246,7 @@ export default function EventsPage() {
 
             {/* ================= SPEAKING ================= */}
             <section className="ev-hero2" id="speaking">
-                <Image className="ev-hero2__bg" src="/images/Author.jpg" alt="Christian Kitumaini" fill sizes="100vw" />
+                <Image className="ev-hero2__bg" src="/images/ChristianSpeaking.jpeg" alt="Christian Kitumaini speaking at a podium" fill sizes="100vw" />
                 <div className="ev-hero2__wash" aria-hidden="true" />
                 <div className="ev-in ev-hero2__in">
                     <p className="ev-kicker">Speaking</p>
@@ -174,9 +264,9 @@ export default function EventsPage() {
                             <h2>Watch the <em>talk</em></h2>
                             <p className="ev-muted">Changing the Narrative About African Entrepreneurs, TEDxYouth@Nyarugenge, February 2023.</p>
                         </div>
-                        <div className="ev-video">
+                        <div className={`ev-video${TEDX_EMBED ? " is-live" : ""}`}>
                             {TEDX_EMBED ? (
-                                <iframe src={TEDX_EMBED} title="TEDx talk: Changing the Narrative About African Entrepreneurs" allow="accelerometer; encrypted-media; picture-in-picture" allowFullScreen loading="lazy" />
+                                <iframe src={TEDX_EMBED} title="Changing the narrative about African entrepreneurs | Christian Kitumaini | TEDxYouth@Nyarugenge" allow="accelerometer; encrypted-media; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen loading="lazy" />
                             ) : (
                                 <>
                                     <span className="ev-video__play" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg></span>

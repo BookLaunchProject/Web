@@ -36,12 +36,15 @@ export function RoundBadge({
   href,
   label,
   className = "",
+  core,
 }: {
   id: string;
   text: string;
   href: string;
   label: string;
   className?: string;
+  /** what sits in the middle; an arrow by default */
+  core?: ReactNode;
 }) {
   return (
     <Link href={href} className={`rbadge ${className}`} aria-label={label}>
@@ -54,7 +57,7 @@ export function RoundBadge({
         </text>
       </svg>
       <span className="rbadge__core" aria-hidden="true">
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M7 17 17 7M9 7h8v8" /></svg>
+        {core ?? <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M7 17 17 7M9 7h8v8" /></svg>}
       </span>
     </Link>
   );

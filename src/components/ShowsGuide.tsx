@@ -28,7 +28,7 @@ const CHANNELS: Channel[] = [
     {
         id: "tv", kind: "TV", plain: "60x Business",
         name: <>60x <em>Business</em></>,
-        meta: "Rwanda · Canal+",
+        meta: "RBA · KC2 · Canal+",
         text: "Broadcast conversations with CEOs, builders and change-makers shaping the African business landscape.",
         tags: ["100+ CEOs and leaders", "National TV"], art: "air",
         cta: [{ label: "Watch highlights", href: "highlights" }],

@@ -75,7 +75,7 @@ export function NextSteps() {
     );
 }
 
-/* ---------- 2. Testimonials: one slim row. Photo (or initials) left, quote right ---------- */
+/* ---------- 2. Testimonials: every quote on show at once ---------- */
 type Quote = { q: string; n: string; r: string; photo?: string };
 const QUOTES: Quote[] = [
     { q: "Africa is lacking in local business narratives which can provide young entrepreneurs with relevant and inspiring information. Since I have known Christian, he is one of the few that is tackling this massive challenge.", n: "Henri Nyakarundi", r: "CEO and Founder, ARED Group" /* , photo: "/images/henri.jpg" */ },
@@ -84,30 +84,30 @@ const QUOTES: Quote[] = [
 ];
 
 export function Testimonials() {
-    const [i, setI] = useState(0);
-    const cur = QUOTES[i];
-    const next = () => setI((v) => (v + 1) % QUOTES.length);
     return (
-        <section className="tq" aria-roledescription="carousel" aria-label="What leaders say">
+        <section className="tq" aria-labelledby="tq-title">
             <div className="tq__in">
-                <div key={`a${i}`} className="tq__avatar">
-                    {cur.photo ? (
-                        <Image src={cur.photo} alt={cur.n} width={96} height={96} />
-                    ) : (
-                        <span aria-hidden="true">{cur.n.split(" ").map((w) => w[0]).join("").slice(0, 2)}</span>
-                    )}
+                <div className="tq__head">
+                    <p className="ns__kicker">What leaders say</p>
+                    <h2 id="tq-title">Trusted by the people <em>building Africa</em></h2>
                 </div>
-                <figure key={i} className="tq__fig" aria-live="polite">
-                    <blockquote>“{cur.q}”</blockquote>
-                    <figcaption><b>{cur.n}</b> · {cur.r}</figcaption>
-                    <div className="tq__nav">
-                        {QUOTES.map((x, j) => (
-                            <button key={x.n} className={`tq__seg${j === i ? " on" : ""}`} aria-label={`Show quote from ${x.n}`} aria-current={j === i} onClick={() => setI(j)}>
-                                <span onAnimationEnd={j === i ? next : undefined} />
-                            </button>
-                        ))}
-                    </div>
-                </figure>
+                <div className="tq__grid">
+                    {QUOTES.map((x) => (
+                        <figure key={x.n} className="tq__card">
+                            <blockquote>{x.q}</blockquote>
+                            <figcaption>
+                                <span className="tq__avatar">
+                                    {x.photo ? (
+                                        <Image src={x.photo} alt="" width={56} height={56} />
+                                    ) : (
+                                        <span aria-hidden="true">{x.n.split(" ").map((w) => w[0]).join("").slice(0, 2)}</span>
+                                    )}
+                                </span>
+                                <span><b>{x.n}</b>{x.r}</span>
+                            </figcaption>
+                        </figure>
+                    ))}
+                </div>
             </div>
         </section>
     );

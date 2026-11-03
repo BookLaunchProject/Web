@@ -1,8 +1,11 @@
 import Link from "next/link";
+import Signature from "@/components/Signature";
+import { NewsletterButton } from "@/components/Newsletter";
 
 const COLUMNS = [
     {
         title: "Explore", links: [
+            { label: "New here? Start here", href: "/start" },
             { label: "Book", href: "/book" },
             { label: "Podcast & Shows", href: "/watch" },
             { label: "About", href: "/about" },
@@ -40,7 +43,7 @@ export default function Footer() {
             <div className="ft__in">
                 <div className="ft__top">
                     <div>
-                        <p className="ft__name">Christian Kitumaini</p>
+                        <p className="ft__name"><Signature className="sig--light" /></p>
                         <p className="ft__line">
                             Christian Kitumaini is a founder, investor, mentor and TV host on a mission to change the narrative about African entrepreneurship.
                         </p>
@@ -73,6 +76,7 @@ export default function Footer() {
                             ))}
                         </div>
                         <ul>
+                            <li><NewsletterButton className="ft__nl">Get the newsletter</NewsletterButton></li>
                             <li>Email [address]</li>
                             <li>WhatsApp [number]</li>
                             <li><Link href="/contact">Contact</Link></li>

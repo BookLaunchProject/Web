@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Signature from "@/components/Signature";
 
 type NavLink = { href: string; label: string; children?: { href: string; label: string }[] };
 
 const links: NavLink[] = [
     { href: "/book", label: "Book" },
     { href: "/watch", label: "Watch & Listen" },
-    { href: "/work", label: "Work With Christian" },
+    { href: "/work", label: "Join My Universe" },
     { href: "/summit", label: "Summit" },
     {
         href: "/about",
@@ -44,9 +45,8 @@ export default function Navbar() {
     return (
         <header className={`bk-top${open ? " is-open" : ""}`}>
             <div className="bk-top-in">
-                <Link className="bk-logo" href="/" onClick={close}>
-                    <span className="bk-logo__mark" aria-hidden="true">CK</span>
-                    Christian Kitumaini
+                <Link className="bk-logo" href="/" onClick={close} aria-label="Christian Kitumaini, home">
+                    <Signature />
                 </Link>
 
                 <nav className="bk-links" aria-label="Main">
@@ -102,6 +102,7 @@ export default function Navbar() {
                     </ol>
                 </nav>
                 <div className="bk-menu__foot">
+                    <Link className="bk-menu__new" href="/start" onClick={close}>New here? Start with the guide →</Link>
                     <p>Behind the Business Dream</p>
                     <Link className="bk-btn" href="/book" onClick={close}>
                         Get the Book
