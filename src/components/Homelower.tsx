@@ -78,9 +78,9 @@ export function NextSteps() {
 /* ---------- 2. Testimonials: every quote on show at once ---------- */
 type Quote = { q: string; n: string; r: string; photo?: string };
 const QUOTES: Quote[] = [
-    { q: "Africa is lacking in local business narratives which can provide young entrepreneurs with relevant and inspiring information. Since I have known Christian, he is one of the few that is tackling this massive challenge.", n: "Henri Nyakarundi", r: "CEO and Founder, ARED Group" /* , photo: "/images/henri.jpg" */ },
-    { q: "His guidance has been key to entrepreneurs and aspiring entrepreneurs.", n: "Kampeta Sayinzonga", r: "CEO, Rwanda Development Bank (BRD Plc)" },
-    { q: "Christian manages to break down big ideas and examples into local and practical advice on starting a business in Rwanda. A much needed and appreciated blend.", n: "Dianne Dusaidi", r: "Program Partner, Mastercard Foundation" },
+    { q: "Africa is lacking in local business narratives which can provide young entrepreneurs with relevant and inspiring information. Since I have known Christian, he is one of the few that is tackling this massive challenge.", n: "Henri Nyakarundi", r: "CEO and Founder, ARED Group", photo: "/images/Henri Nyakarundi.jpeg" },
+    { q: "His guidance has been key to entrepreneurs and aspiring entrepreneurs.", n: "Kampeta Sayinzonga", r: "CEO, Rwanda Development Bank (BRD Plc)", photo: "/images/Kampeta Sayinzoga.jpeg" },
+    { q: "Christian manages to break down big ideas and examples into local and practical advice on starting a business in Rwanda. A much needed and appreciated blend.", n: "Dianne Dusaidi", r: "Program Partner, Mastercard Foundation", photo: "/images/Diane Dusaidi.jpeg" },
 ];
 
 export function Testimonials() {
@@ -98,7 +98,7 @@ export function Testimonials() {
                             <figcaption>
                                 <span className="tq__avatar">
                                     {x.photo ? (
-                                        <Image src={x.photo} alt="" width={56} height={56} />
+                                        <Image src={x.photo} alt={x.n} width={128} height={128} sizes="64px" />
                                     ) : (
                                         <span aria-hidden="true">{x.n.split(" ").map((w) => w[0]).join("").slice(0, 2)}</span>
                                     )}

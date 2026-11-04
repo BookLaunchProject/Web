@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Testimonials } from "./Homelower";
 
 const BUY = "https://btbd.imaginewe.rw/";
 const INTRO_VIDEO = "https://player.vimeo.com/video/1242978263?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479";
@@ -173,20 +174,7 @@ export default function BookPage() {
             </section>
 
             {/* ===== Praise ===== */}
-            <section className="bp-sec bp-tint">
-                <div className="bp-in">
-                    <p className="bp-kicker">Praise</p>
-                    <h2>What leaders are <em>saying</em></h2>
-                    <div className="bp-praise">
-                        {PRAISE.map((p, i) => (
-                            <figure key={i}>
-                                <blockquote>{p.q}</blockquote>
-                                <figcaption><b>{p.n}</b>{p.r}</figcaption>
-                            </figure>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            <Testimonials />
 
             {/* ===== In the press ===== */}
             <section className="bp-sec bp-press">

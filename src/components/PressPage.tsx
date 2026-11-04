@@ -115,7 +115,7 @@ export default function PressPage() {
             </section>
 
             {/* ===== Assets ===== */}
-            <section className="ab-sec ab-tint" id="assets">
+            {/* <section className="ab-sec ab-tint" id="assets">
                 <div className="ab-in">
                     <h2 className="ab-h2">Assets</h2>
                     <div className="pr-assets">
@@ -139,13 +139,10 @@ export default function PressPage() {
                                 <span aria-hidden="true">↓</span>
                             </a>
                         </div>
-                        <div className="pr-asset pr-asset--todo">
-                            <p className="pr-asset__h">Logos</p>
-                            <p>[to supply]</p>
-                        </div>
+
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* ===== Topics + features ===== */}
             <section className="ab-sec" id="topics">
