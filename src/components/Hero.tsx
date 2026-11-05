@@ -5,7 +5,7 @@ import { RoundBadge } from "@/components/ui";
 export default function Hero() {
     return (
         <section className="bk-hero" id="top">
-            <Image className="bk-hero__bg" src="/images/Authorbg.jpg" alt="Christian Kitumaini holding Behind the Business Dream" fill preload sizes="100vw" />
+            <Image className="bk-hero__bg" src="/images/NewHeroPic.jpg" alt="Christian Kitumaini holding Behind the Business Dream" fill preload sizes="100vw" />
             <div className="bk-hero__wash" aria-hidden="true" />
 
             <div className="bk-hero__in">

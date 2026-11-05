@@ -146,7 +146,7 @@ export default function EventsPage() {
                         ))}
                     </ol>
 
-                    <div className="ev-stage">
+                    {/* <div className="ev-stage">
                         <div>
                             <p className="ev-kicker">Speakers and agenda</p>
                             <h2>Who&apos;s on <em>stage</em></h2>
@@ -155,7 +155,7 @@ export default function EventsPage() {
                         <div className="ev-spk" aria-hidden="true">
                             {Array.from({ length: 6 }, (_, i) => (<span key={i}>?</span>))}
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </section>
 

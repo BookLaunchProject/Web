@@ -81,6 +81,11 @@ const QUOTES: Quote[] = [
     { q: "Africa is lacking in local business narratives which can provide young entrepreneurs with relevant and inspiring information. Since I have known Christian, he is one of the few that is tackling this massive challenge.", n: "Henri Nyakarundi", r: "CEO and Founder, ARED Group", photo: "/images/Henri Nyakarundi.jpeg" },
     { q: "His guidance has been key to entrepreneurs and aspiring entrepreneurs.", n: "Kampeta Sayinzonga", r: "CEO, Rwanda Development Bank (BRD Plc)", photo: "/images/Kampeta Sayinzoga.jpeg" },
     { q: "Christian manages to break down big ideas and examples into local and practical advice on starting a business in Rwanda. A much needed and appreciated blend.", n: "Dianne Dusaidi", r: "Program Partner, Mastercard Foundation", photo: "/images/Diane Dusaidi.jpeg" },
+    { q: "Christian doesn’t theorize from a distance. He lives it. Every insight here is earned, not imagined. Every framework has been tested in the messy reality of building a business in Africa.", n: "Eric Kacou", r: "Co-Founder and Managing Partner, Entrepreneurial Solutions Partners", photo: "/images/Eric Kacou.jpeg" },
+    { q: "Ever since I have known Christian, he has been very resilient, even when nothing seemed to work. He pushed through, learned the ropes, and used the ropes to reel in opportunity after opportunity.", n: "Georgie Ndirangu", r: "Director of Programs, Africa Leadership and Dialogue Institute (ALADI)", photo: "/images/Goergie Ndirangu.jpeg" },
+    { q: "This is a go-to book for entrepreneurs. It talks about the journey, the hardships and the rising", n: "Fiona Kamikazi", r: "CEO of Marca Ltd", photo: "/images/Fiona Kamikazi.jpeg" },
+    { q: "Christian has spent years supporting entrepreneurs by creating platforms for them to share their stories and by offering business insights through talks, TV shows, social media, and podcasts. His new book is a natural next step in his journey—one that will impact not just this generation, but future ones as well. It reflects his core values of courage, integrity, sound judgment, and strong leadership, all essential for lasting business success.", n: "Patrick Buchana", r: "CEO of AC Group", photo: "/images/Patrick Buchana-1.jpg" },
+
 ];
 
 export function Testimonials() {
@@ -113,12 +118,53 @@ export function Testimonials() {
     );
 }
 
-/* ---------- 3. Latest conversations (replace the [placeholders]) ---------- */
-const EPS = [
-    { n: "01", t: "[Episode title]", g: "[Guest name], [Role, Company]", d: "[00:00]" },
-    { n: "02", t: "[Episode title]", g: "[Guest name], [Role, Company]", d: "[00:00]" },
-    { n: "03", t: "[Episode title]", g: "[Guest name], [Role, Company]", d: "[00:00]" },
+/* ---------- 3. Latest conversations: the videos we have so far (add new ones to the top) ---------- */
+type Episode = { id: string; tag: string; t: string; g: string; d: string; thumb: string; embed: string };
+const EPS: Episode[] = [
+    {
+        id: "tedx", tag: "TEDx", d: "10:04",
+        t: "Changing the narrative about African entrepreneurs",
+        g: "Christian Kitumaini at TEDxYouth@Nyarugenge",
+        thumb: "https://i.ytimg.com/vi/4PYMV12oXs8/maxresdefault.jpg",
+        embed: "https://www.youtube-nocookie.com/embed/4PYMV12oXs8?autoplay=1",
+    },
+    {
+        id: "intro", tag: "The book", d: "1:19",
+        t: "Why I wrote Behind the Business Dream",
+        g: "A message from Christian",
+        thumb: "https://i.vimeocdn.com/video/2221385619-bed0a93763b24af6ea544cc9288cc6795f4a77059e7aa69f5785e8b0d65f9ca6-d_1280",
+        embed: "https://player.vimeo.com/video/1242978263?title=0&byline=0&portrait=0&badge=0&autopause=0&autoplay=1",
+    },
 ];
+
+/* Shows the thumbnail first and only loads the video player when someone presses play */
+function EpisodeCard({ e }: { e: Episode }) {
+    const [playing, setPlaying] = useState(false);
+    return (
+        <article className="ep__card">
+            <div className="ep__thumb">
+                {playing ? (
+                    <iframe
+                        src={e.embed}
+                        title={e.t}
+                        allow="autoplay; fullscreen; picture-in-picture; encrypted-media; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                    />
+                ) : (
+                    <button type="button" className="ep__start" onClick={() => setPlaying(true)} aria-label={`Play: ${e.t}`}>
+                        <Image src={e.thumb} alt="" fill sizes="(max-width: 800px) 100vw, 50vw" />
+                        <span className="ep__tag">{e.tag}</span>
+                        <span className="ep__play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg></span>
+                        <em>{e.d}</em>
+                    </button>
+                )}
+            </div>
+            <h3>{e.t}</h3>
+            <p>{e.g}</p>
+        </article>
+    );
+}
 
 export function Episodes() {
     return (
@@ -132,17 +178,7 @@ export function Episodes() {
                     <Link className="bk-btn" href="/watch">See all episodes <span><Arrow /></span></Link>
                 </div>
                 <div className="ep__grid">
-                    {EPS.map((e) => (
-                        <article key={e.n} className="ep__card">
-                            <div className="ep__thumb">
-                                <span className="ep__tag">EP {e.n}</span>
-                                <span className="ep__play" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg></span>
-                                <em>{e.d}</em>
-                            </div>
-                            <h3>{e.t}</h3>
-                            <p>{e.g}</p>
-                        </article>
-                    ))}
+                    {EPS.map((e) => (<EpisodeCard key={e.id} e={e} />))}
                 </div>
             </div>
         </section>
